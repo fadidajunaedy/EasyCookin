@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #FAF1E6 !important;
+    font-family: Roboto !important;
+    color: #064420 !important;
+}
+
+header {
+    border-bottom: #064420 !important;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    text-decoration: none;
+    color: #064420;
+}
+
+.logo img {
+    height: 3rem;
+    margin-bottom: 0.3em;
+}
+
+.logo:hover {
+    color: #064420;
+}
+
+h1, h1, h3, h4, .logo {
+    font-family: PT Serif !important;
+    font-weight: 700 !important;
+}
+
+
+/* Jumbotron */
+.jumbotron {
+    position: relative;
+    color: #FDFAF6 !important;
+    min-height: 40vh;
+}
+
+.jumbotron img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.card {
+    background-color: #FDFAF6 !important;
+}
+
+/* Search Bar */
+.search-container {
+    background-color: #C0D8C0;
+}
+
+.input-group {
+    display: flex;
+}
+
+.input-group input {
+    flex-basis: 80%;
+}
+
+.input-group button {
+    flex-basis: 20%;
+}
+
+#search-input {
+    font-size: 1rem;
+    color: #064420;
+    border: none;
+}
+
+#search-button {
+    border: none;
+}
+
+#search-button box-icon {
+    margin-top: 5px;
+    color: #064420;
+}
+
+.btn-outline-primary {
+    background: #E4EFE7 !important;
+    color: #064420 !important;
+    border-color: #064420 !important;
+}
+
+.btn-outline-primary:hover {
+    background: #064420 !important;
+    color: #E4EFE7 !important;
+}
+
+/* Letter Button */
+.btn-letter {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #064420;
+}
+
+.btn-letter:hover {
+    color: #E4EFE7;
+}
+
+.image {
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#btn-close-detail {
+    cursor: pointer;
+    color: #064420;
+    text-decoration: none;
+}
+
+#btn-close-detail:hover {
+    color: #E4EFE7;
+}
+
+tr, td {
+    color: #064420;
+}
+
+footer {
+    color: #064420 !important;
+}
+
