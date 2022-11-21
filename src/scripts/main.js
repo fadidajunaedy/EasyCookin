@@ -23,7 +23,6 @@ const main = () => {
         try {
             const results = await DataRecipes.searchRecipe(searchInput.value);
             recipesContainer.recipes = results;
-
         } catch (e) {
             recipesContainer.renderError(e);
         }
@@ -52,7 +51,6 @@ const main = () => {
         detailContainer.classList.add('d-none');
     }
 
-
     // Show Category    
     const getCategory = async () => {
         try {
@@ -78,7 +76,6 @@ const main = () => {
         }
     });
 
-
     // Close Detail
     const closeDetail = document.getElementById('btn-close-detail');
     closeDetail.addEventListener('click', () => {
@@ -88,9 +85,9 @@ const main = () => {
     // Show Recipe by Category
     document.addEventListener('click', async e => {
         if(e.target.classList.contains('btn-category')){
-            const recipeId = e.target.dataset.id;
+            const categoryId = e.target.dataset.id;
             try {
-                const result = await DataRecipes.searchByCategory(recipeId);
+                const result = await DataRecipes.searchByCategory(categoryId);
                 recipesContainer.recipes = result;
                 document.getElementById('search-input').value = '';
             } catch (e) {
@@ -112,11 +109,6 @@ const main = () => {
             }
         }
     })
-
-
-
 };
-
-
 
 export default main;
