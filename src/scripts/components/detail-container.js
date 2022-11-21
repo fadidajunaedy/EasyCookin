@@ -1,4 +1,4 @@
-import './detail-modal.js';
+import './detail-recipe.js';
 
 class DetailContainer extends HTMLElement {
     set details(details) {
@@ -9,9 +9,9 @@ class DetailContainer extends HTMLElement {
     render() {
         this.innerHTML = '';
         this._details.forEach(detail => {
-            const detailModal = document.createElement('detail-modal');
-            detailModal.detail = detail;
-            this.appendChild(detailModal);
+            const detailRecipe = document.createElement('detail-recipe');
+            detailRecipe.detail = detail;
+            this.appendChild(detailRecipe);
         });
     }
 

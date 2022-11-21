@@ -1,4 +1,4 @@
-class DetailModal extends HTMLElement {
+class DetailRecipe extends HTMLElement {
     connectedCallback() {
         this.render();
     }
@@ -117,12 +117,8 @@ class DetailModal extends HTMLElement {
                 <a href="${this._detail.strYoutube}" target="_blank" type="button" class="btn btn-outline-primary shadow">Watch Tutorial</a>
             </div>
         </div>
-    
-
         `;
-
     }
-    
 }
 
-customElements.define('detail-modal', DetailModal);
+customElements.define('detail-recipe', DetailRecipe);

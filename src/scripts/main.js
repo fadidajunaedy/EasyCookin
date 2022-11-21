@@ -64,14 +64,6 @@ const main = () => {
     };
     getCategory();
 
-    function scrollToTop() {
-        // Scroll to top logic
-        rootElement.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        })
-      }
-
     // Get Detail Recipe
     document.addEventListener('click', async e => {
         if (e.target.classList.contains('btn-detail')) {
@@ -86,6 +78,8 @@ const main = () => {
         }
     });
 
+
+    // Close Detail
     const closeDetail = document.getElementById('btn-close-detail');
     closeDetail.addEventListener('click', () => {
         closeDetailElement();
