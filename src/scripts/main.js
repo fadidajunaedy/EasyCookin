@@ -18,8 +18,8 @@ const main = () => {
     const jumbotronHero = document.querySelector('jumbotron-hero');
     const letterButton = document.querySelector('letter-button');
 
-    // Search Recipe
-    const onButtonSearchClicked = async () => {
+    // Search Recipes
+    const getRecipeByKeyword = async () => {
         try {
             const results = await DataRecipes.searchRecipe(searchInput.value);
             recipesContainer.recipes = results;
@@ -27,7 +27,7 @@ const main = () => {
             recipesContainer.renderError(e);
         }
     };
-    searchInput.clickEvent = onButtonSearchClicked;
+    searchInput.clickEvent = getRecipeByKeyword;
 
     //Show Detail Element
     const showDetailElement = () => {
@@ -60,55 +60,65 @@ const main = () => {
             console.log(e);
         }
     };
-    getCategory();
+
+    // Show Recipes by Category
+    const showRecipesByCategory = async categoryId => {
+        try {
+            const results = await DataRecipes.searchByCategory(categoryId);
+            recipesContainer.recipes = results;
+            document.getElementById('search-input').value = '';
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    // Show Recipes by Letter
+    const showRecipesByLetter = async letter => {
+        try {
+            const result = await DataRecipes.searchByLetter(letter);
+            recipesContainer.recipes = result;
+            document.getElementById('search-input').value = '';
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
     // Get Detail Recipe
-    document.addEventListener('click', async e => {
-        if (e.target.classList.contains('btn-detail')) {
-            const recipeId = e.target.dataset.id;
-            try {
-                const result = await DataRecipes.showDetail(recipeId);
-                detailContainer.details = result;
-                showDetailElement();
-            } catch (e) {
-                console.log(e);
-            }
+    const getDetailRecipe = async recipeId => {
+        try {
+            const result = await DataRecipes.showDetail(recipeId);
+            detailContainer.details = result;
+            showDetailElement();
+            setTimeout(function () {
+                window.scrollTo(0, 0);
+            },2);
+        } catch (e) {
+            console.log(e);
         }
-    });
+    }
 
     // Close Detail
     const closeDetail = document.getElementById('btn-close-detail');
     closeDetail.addEventListener('click', () => {
         closeDetailElement();
     });
-
-    // Show Recipe by Category
-    document.addEventListener('click', async e => {
-        if(e.target.classList.contains('btn-category')){
+    
+    // Click Event
+    document.addEventListener('click', e => {
+        if (e.target.classList.contains('btn-detail')) {
+            const recipeId = e.target.dataset.id;
+            getDetailRecipe(recipeId);
+        } else if (e.target.classList.contains('btn-category')){
             const categoryId = e.target.dataset.id;
-            try {
-                const result = await DataRecipes.searchByCategory(categoryId);
-                recipesContainer.recipes = result;
-                document.getElementById('search-input').value = '';
-            } catch (e) {
-                console.log(e);
-            }
+            showRecipesByCategory(categoryId);
+        } else if (e.target.classList.contains('btn-letter')) {
+            const letter = e.target.dataset.id;
+            showRecipesByLetter(letter);
         }
     });
 
-    // Show Recipe by Letter
-    document.addEventListener('click', async e => {
-        if(e.target.classList.contains('btn-letter')){
-            const letter = e.target.dataset.id;
-            try {
-                const result = await DataRecipes.searchByLetter(letter);
-                recipesContainer.recipes = result;
-                document.getElementById('search-input').value = '';
-            } catch (e) {
-                console.log(e);
-            }
-        }
-    })
+    getCategory();
+
 };
 
 export default main;
